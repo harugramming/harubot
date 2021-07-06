@@ -76,7 +76,23 @@
     // });
   }
 
+  //送信ボタン押下時
   $('#submit').on('click', function() {
+    output();
+  });
+
+  //エンター押下時
+  let text_form = document.getElementById('question_input');
+
+  text_form.addEventListener('keypress', test_ivent);
+
+  function test_ivent(e) {
+      if (e.keyCode === 13) {
+      output();
+    }  
+      return false;
+  }
+  function output(){
     key = $('#question_input').val();
     // helpコマンドが入力されていた場合、help関数を呼び出して、ループを抜ける
     if(key == 'help'){
@@ -84,8 +100,8 @@
     }else{　//helpコマンド以外の場合、通常の質問応答をする
       answer(key);
     };
-    
-  });
+    $('#question_input').val("");
+  }
 
   // 質問応答をする関数
   function answer(key){
@@ -116,8 +132,19 @@
   let QAdata = [
     ['食べ物', '好きな食べ物はなんでも！<br>嫌いな食べ物はセロリ！'],
     ['血液型', '血液型はB型だよ！'],
-    ['身長', '身長は165cmだよ！']
+    ['身長', '身長は165cmだよ！'],
+    ['体重', 'りんご3個分です。'],
+    ['性別', '男だよ！'],
+    ['年齢', '24さいだよ！'],
+    ['趣味', 'ビリヤードが好きだよ！'],
+    ['得意な教科', '数学が好きだったよ！'],
+    ['動物', 'カワウソが好きだよ！'],
+    ['テレビ番組', '千鳥の相席食堂が好きだよ！'],
+    ['生年月日', '1997年2月19日生まれだよ！'],
+    ['星座', 'うお座だよ！'],
+
   ];
+
 
   // 質問に対する答えを返却する関数
   function question_to_answer(question){

@@ -45,6 +45,7 @@ span{
   height: 70%;
   width: 75%;
   outline: none;
+  padding: 8px;
 }
 .fa-paper-plane{
   font-size: 34px;
