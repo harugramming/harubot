@@ -77,8 +77,18 @@
   }
 
   $('#submit').on('click', function() {
-    console.log($('#question_input').val());
     key = $('#question_input').val();
+    // helpコマンドが入力されていた場合、help関数を呼び出して、ループを抜ける
+    if(key == 'help'){
+      help();
+    }else{　//helpコマンド以外の場合、通常の質問応答をする
+      answer(key);
+    };
+    
+  });
+
+  // 質問応答をする関数
+  function answer(key){
     botui.message.add({
       delay: 100,
       human: true,
@@ -100,13 +110,8 @@
         content: answer_message
       });
       });
-  });
 
-
-  // コマンド
-  let command = [
-    ['help', '困ってる？']
-  ];
+  }
   // 質問と答えの対応表を定義
   let QAdata = [
     ['食べ物', '好きな食べ物はなんでも！<br>嫌いな食べ物はセロリ！'],
@@ -117,12 +122,6 @@
   // 質問に対する答えを返却する関数
   function question_to_answer(question){
 
-    for(var i=0; i < command.length; i++){
-      if ( question.indexOf(command[i][0]) != -1) {
-        return command[i][1];
-        }
-    }
-
     for(var i=0; i < QAdata.length; i++){
       if ( question.indexOf(QAdata[i][0]) != -1) {
         return QAdata[i][1];
@@ -132,7 +131,43 @@
     return "ひみつだよ。";
   }
 
+  
+  //ヘルプコマンド
+  function help(){
+    botui.action.button({
+          action: [{
+            icon: 'circle-thin',
+            text: '質問できる項目を知りたい',
+            value: true
+          }, {
+            icon: 'circle-thin',
+            text: 'このアプリについて知りたい',
+            value: false
+          }]
+        }).then(function(res) {
+  
+        //「続ける」か「終了」するかの条件分岐処理
+        res.value ? help_what_contents() : end();
+      });;
+  };
 
+
+  
+  //質問できる項目を知りたい
+  function help_what_contents(){
+    //QAデータから質問部分だけを抽出する
+    var questiondata = [];
+
+    for(var i=0; i < QAdata.length; i++){
+      console.log(QAdata[i][0]);
+      questiondata.push(QAdata[i][0]);
+    }
+    botui.message.add({
+      type: 'html',
+      loading: false,
+      content: questiondata
+    });
+  }
   //プログラムを終了する処理
   function end() {
     botui.message.bot({
