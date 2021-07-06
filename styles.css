@@ -1,0 +1,51 @@
+
+/* heightの調整 */
+.botui_headder{
+  height: 7.5%;
+}
+.botui-app-container{
+  height: 82.5%;
+}
+.botui-input-form{
+  height: 10%;
+}
+
+.botui-app-container-wrap{
+  width: 100vw;
+  height: 100vh;
+}
+.botui_headder{
+  width: 100%;
+  color: #fff;
+  background-color: #0C2E61;
+}
+.botui_headder p {
+  text-align: center;
+  font-family: Noto Sans JP;
+  font-size: 22px;
+  padding: 16px 0 10px 0;
+}
+.botui-messages-containe, .botui-actions-container{
+  background-color: #fafaff;
+}
+span{
+  font-size: 16px;
+}
+.botui-input-form{
+  background-color: #DAD5CD;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.botui-input-form input{
+  border-radius: 18px;
+  height: 70%;
+  width: 75%;
+}
+.fa-paper-plane{
+  font-size: 34px;
+  color: #fff;
+  background-color: #1C3E71;
+  padding: 9px 19px 11px 18px;
+  border-radius: 12px;
+}
