@@ -1,4 +1,7 @@
 
+.pc_display{
+  display: none;
+}
 /* heightの調整 */
 .botui_headder{
   height: 7.5%;
@@ -41,6 +44,7 @@ span{
   border-radius: 18px;
   height: 70%;
   width: 75%;
+  outline: none;
 }
 .fa-paper-plane{
   font-size: 34px;
@@ -48,4 +52,37 @@ span{
   background-color: #1C3E71;
   padding: 9px 19px 11px 18px;
   border-radius: 12px;
+}
+
+/* //モバイルファースト */
+@media (min-width: 1024px) {
+  .pc_display{
+    display: block;
+  }
+  body{
+    background-color: #f5f6f7;
+  }
+  .sentence{
+    margin: 0 auto 15px auto;
+    text-align: center;
+  }
+  .botui-app-container-wrap{
+    width: 300px;
+    height: 600px;
+    margin: 0 auto;
+    border: solid 1px #333;
+  }
+  .botui-container{
+    width: 298px;
+  }
+  .botui_headder p{
+    padding: 6px 0;
+  }
+  span{
+    font-size: 15px;
+  }
+  .fa-paper-plane{
+    font-size: 28px;
+    padding: 7px 16px 7px 16px;
+  }
 }
